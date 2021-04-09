@@ -17,13 +17,9 @@ def help(update, context):
 def wikip(update, context):
     print(update.message['chat']['first_name']," запросил: ", context.args)
 
-    poisk = ' '.join(context.args).strip()
-    result = "Проверьте введенное слово"
-    if poisk:
-        result = search_wiki(poisk)
-        if not result:
-            result = "Проверьте введенное слово"
-    update.message.reply_text(result)
+    update.message.reply_text("Идет поиск в википедии...")
+    rezult, urlrez = search_wiki(" ".join(context.args))
+    update.message.reply_text(rezult + urlrez)
 
 
 # Определяем функцию-обработчик сообщений.
